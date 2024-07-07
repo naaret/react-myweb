@@ -219,7 +219,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='df'>
-                    <div className='ll2'>
+                    <div className='ll'>
                         <p className='textT'>Project ID: &nbsp;</p>
                         <div>
                             <input
@@ -252,7 +252,7 @@ const Home = () => {
                             </input>
                         </div>
                     </div>
-                    <div className='ll2'>
+                    <div className='ll'>
                         <label htmlFor="inputText">Details: &nbsp;</label>
                         <textarea
                             id="inputText"
@@ -269,8 +269,8 @@ const Home = () => {
 
                         <input type="file" onChange={handleChange} />
                     </div>
-                    <div className='ll btns'>
-                        <div>
+                    <div className='ll2'>
+                        <div className='btns' > 
                             <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
                         </div>
 
@@ -326,8 +326,10 @@ const Home = () => {
                     </div>
 
                 </div>
-                <div className='btns ll'>
+                <div className=' ll2'>
+                    <div className='btns' >
                     <button className=" btn btn-primary" onClick={handleSubmits}>Submits</button>
+                    </div>
                 </div>
             </div>
         </div>
