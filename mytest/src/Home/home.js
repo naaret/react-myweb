@@ -20,7 +20,7 @@ const Home = () => {
     const [teamDetails, setTeamDetails] = useState({});
     const [file, setFile] = useState(null);
     const [department, setDepartment] = useState('ADMIN');
-  
+
     useEffect(() => {
         axios.get('http://localhost:3001/departments')
             .then(response => {
@@ -53,17 +53,18 @@ const Home = () => {
             .then(response => {
                 console.log('Employee added successfully', response);
                 if (response.status === 200) {
-                    if (response.data.message === 'Employees have Teams') {
-                        alert('Employees have Teams');
+                    if (response.data.message === 'Employee already exists') {
+                        alert('Employee already exists');
                     } else {
-                        console.log('Employee added successfully');
+                        alert('เพิ่มพนักงานเรียบร้อย');
                         setSelectedEmployee('');
                         setEmployeeDetails({});
                     }
                 }
             })
             .catch(error => {
-                console.error('There was an error submitting the form!', error);
+                // console.error('มีข้อผิดพลาดในการส่งแบบฟอร์ม!', error);
+                alert('ไม่สามารถเพิ่มพนักงานได้');
             });
     };
 
@@ -269,8 +270,9 @@ const Home = () => {
                         <input type="file" onChange={handleChange} />
                     </div>
                     <div className='ll btns'>
-
-                        <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                        <div>
+                            <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                        </div>
 
                     </div>
                 </div>

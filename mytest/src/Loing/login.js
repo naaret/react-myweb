@@ -53,7 +53,7 @@ const Login = () => {
           <div class="form-group" >
             <div class='pads'>
               <input
-                type="email"
+                type="text"
                 class="form-control"
                 placeholder="Username"
                 value={username}

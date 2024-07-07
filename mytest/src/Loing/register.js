@@ -14,7 +14,7 @@ const Register = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [showModal, setShowModal] = useState(false);
-
+  const [isValid, setIsValid] = useState(true);
 
   const validatePassword = (password) => {
     // Regex: ต้องมีตัวเลข, ตัวอักษรใหญ่, ตัวอักษรเล็ก และภาษาอังกฤษเท่านั้น
