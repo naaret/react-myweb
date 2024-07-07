@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './cradswrork.css'
 
 const CardDeadline = () => {
     const [workData, setWorkData] = useState([]);
@@ -16,19 +17,18 @@ const CardDeadline = () => {
             });
     }, []);
 
-const handleStatusUpdate = (id) => {
-        axios.put(`http://localhost:3001/dashboard/${id}`, { status: 'Successfully' })
-            .then(response => {
-                setWorkData(prevState =>
-                    prevState.map(item => 
-                        item.id === id ? { ...item, status: 'Successfully' } : item
-                    )
-                );
-                console.log("Status updated successfully", response.data);
-            })
-            .catch(error => {
-                console.error('Error updating status: ', error);
-            });
+    const handleStatusUpdate = async (id) => {
+        try {
+            const response = await axios.put(`http://localhost:3001/dashboard/${id}`, { status: 'Successfully' });
+            setWorkData(prevState =>
+                prevState.map(item =>
+                    item.id === id ? { ...item, status: 'Successfully' } : item
+                )
+            );
+            console.log("Status updated successfully", response.data);
+        } catch (error) {
+            console.error('Error updating status: ', error);
+        }
     };
 
     const CardComponent = ({ data }) => {
@@ -58,11 +58,15 @@ const handleStatusUpdate = (id) => {
     return (
         <div className="container">
             <div className="row">
-                {workData.map(item => (
-                    <div key={item.id} className="col-md-4 mb-3">
-                        <CardComponent data={item} />
-                    </div>
-                ))}
+                {workData.length === 0 ? (
+                    <label>ไม่มีข้อมูล</label>
+                ) : (
+                    workData.map(item => (
+                        <div key={item.id} className="col-md-4 mb-3">
+                            <CardComponent data={item} />
+                        </div>
+                    ))
+                )}
             </div>
         </div>
     );

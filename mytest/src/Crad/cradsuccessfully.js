@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './cradswrork.css'
 
 const CardSuccess = () => {
     const [workData, setWorkData] = useState([]);
@@ -15,12 +16,14 @@ const CardSuccess = () => {
                 console.error('Error fetching data: ', error);
             });
     }, []);
-const CardComponent = ({ data }) => {
+
+    const CardComponent = ({ data }) => {
         const imgPath = data.imgPath.replace(/\\/g, '/');
         const startDate = data.startDate.replace(/T/g, ' ');
         const startDates = startDate.replace(/.000Z/g, ' ');
         const endDate = data.endDate.replace(/T/g, ' ');
         const endDates = endDate.replace(/.000Z/g, ' ');
+        
         return (
             <div className="card">
                 <img src={'http://localhost:3001/' + imgPath} alt="Employee Preview" className="card-img-top" />
@@ -40,11 +43,15 @@ const CardComponent = ({ data }) => {
     return (
         <div className="container">
             <div className="row">
-                {workData.map(item => (
-                    <div key={item.id} className="col-md-4 mb-3">
-                        <CardComponent data={item} />
-                    </div>
-                ))}
+                {workData.length === 0 ? (
+                    <label>ไม่มีข้อมูล</label>
+                ) : (
+                    workData.map(item => (
+                        <div key={item.id} className="col-md-4 mb-3">
+                            <CardComponent data={item} />
+                        </div>
+                    ))
+                )}
             </div>
         </div>
     );

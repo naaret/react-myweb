@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './cradswrork.css'
 
 const CardWork = () => {
     const [workData, setWorkData] = useState([]);
@@ -9,7 +10,7 @@ const CardWork = () => {
         axios.get('http://localhost:3001/dashboard')
             .then(response => {
                 setWorkData(response.data);
-                // console.log("dashboard", response.data); // ตรวจสอบข้อมูลที่ได้
+                // console.log("dashboard", response.data);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
@@ -50,9 +51,7 @@ const CardWork = () => {
                             <p className="card-text">Status: {data.status}</p>
 
                             <button className="btn btn-primary" onClick={() => handleStatusUpdate(data.id)}>Successfully</button>
-
                         </div>
-
                     </div>
                 )}
             </div>
@@ -62,11 +61,15 @@ const CardWork = () => {
     return (
         <div className="container">
             <div className="row">
-                {workData.map(item => (
-                    <div key={item.id} className="col-md-4 mb-3">
-                        <CardComponent data={item} />
-                    </div>
-                ))}
+                {workData.length === 0 ? (
+                    <label>ไม่มีข้อมูล</label>
+                ) : (
+                    workData.map(item => (
+                        <div key={item.id} className="col-md-4 mb-3">
+                            <CardComponent data={item} />
+                        </div>
+                    ))
+                )}
             </div>
         </div>
     );

@@ -160,7 +160,7 @@ const Home = () => {
             <div className='rd'>
                 <div className='df'>
                     <div className='ll'>
-                        <label htmlFor="departmentSelect">Department: &nbsp;</label>
+                        <h12 htmlFor="departmentSelect">Department: &nbsp;</h12>
                         <div>
                             <select
                                 className="form-control"
@@ -177,7 +177,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='ll'>
-                        <label htmlFor="employeeSelect">Employee: &nbsp;</label>
+                        <h12 htmlFor="employeeSelect">Employee: &nbsp;</h12>
                         <div>
                             <select
                                 className="form-control"
@@ -253,7 +253,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='ll'>
-                        <label htmlFor="inputText">Details: &nbsp;</label>
+                        <h12 htmlFor="inputText">Details: &nbsp;</h12>
                         <textarea
                             id="inputText"
                             name="inputText"
@@ -280,7 +280,7 @@ const Home = () => {
             <br></br>
             <div className='rd'>
                 <div className='df dt'>
-                    <label htmlFor="teamsSelect">Teams: &nbsp;</label>
+                    <h12 htmlFor="teamsSelect">Teams: &nbsp;</h12>
                     <div>
                         <select
                             className="form-control"
@@ -308,7 +308,7 @@ const Home = () => {
                     </div>
                     <div className='ll'>
                         <div>
-                            <label for="department">Select Department:</label>
+                            <h12 for="department">Select Department:</h12>
                         </div>
                         <div className='ll'>
                             <select

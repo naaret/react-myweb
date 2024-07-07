@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
+import { useHistory } from 'react-router-dom';  
 import { Modal, Button } from 'react-bootstrap';
 
 const Register = () => {
@@ -15,7 +16,7 @@ const Register = () => {
   const [lastname, setLastname] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [isValid, setIsValid] = useState(true);
-
+  const history = useHistory();
   const validatePassword = (password) => {
     // Regex: ต้องมีตัวเลข, ตัวอักษรใหญ่, ตัวอักษรเล็ก และภาษาอังกฤษเท่านั้น
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -39,15 +40,12 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // การตรวจสอบขั้นพื้นฐาน
     if (!username || !password || !rDate || !email || !Phone || !firstname || !lastname) {
       setMessage('กรุณากรอกข้อมูลให้ครบทุกช่อง');
       return;
     }
 
     setLoading(true);
-
     try {
       const response = await axios.post('http://localhost:3001/register', {
         username,
@@ -60,9 +58,9 @@ const Register = () => {
       });
 
       if (response.status === 201) {
-        // Registration successful
         setShowModal(true);
         clearForm();
+        history.push('/');
       } else {
         setMessage('ลงทะเบียนไม่สำเร็จ');
       }
