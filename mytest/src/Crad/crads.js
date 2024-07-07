@@ -4,7 +4,7 @@ import CardWork from './cradswrork';
 import CardSuccess from './cradsuccessfully';
 import CardDeadline from './craddeadline';
 function Crads() {
-  const [activeButton, setActiveButton] = useState('');
+  const [activeButton, setActiveButton] = useState('primary');
 
   const showCard = (cardId) => {
     setActiveButton(cardId);
@@ -25,7 +25,7 @@ function Crads() {
         <button
           id="successButton"
           className={`button ${activeButton === 'success' ? 'active' : ''}`}
-          style={{ backgroundColor: activeButton === 'success' ? '#388e3c' : 'gray' }}
+          style={{ backgroundColor: activeButton === 'success' ? '#5bca60' : 'gray' }}
           onClick={() => showCard('success')}
         >
           SuccessFully
