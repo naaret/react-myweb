@@ -55,7 +55,7 @@ const Login = () => {
               <input
                 type="email"
                 class="form-control"
-                placeholder="ชื่อผู้ใช้"
+                placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -66,7 +66,7 @@ const Login = () => {
               <input
                 type="password"
                 class="form-control"
-                placeholder="รหัสผ่าน"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 minLength={8}

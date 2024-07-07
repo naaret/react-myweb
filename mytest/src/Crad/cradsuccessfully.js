@@ -9,7 +9,7 @@ const CardSuccess = () => {
         axios.get('http://localhost:3001/dashboard-successfully')
             .then(response => {
                 setWorkData(response.data);
-                console.log("dashboard", response.data); // ตรวจสอบข้อมูลที่ได้
+                // console.log("dashboard", response.data); // ตรวจสอบข้อมูลที่ได้
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);

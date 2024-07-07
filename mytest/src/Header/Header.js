@@ -28,7 +28,7 @@ const Header = () => {
                     <li><a href="/dashboard">Dashboard</a></li>
                     {username && <li>Welcome {username}</li>}
                     <li><button 
-                        onClick={handleLogout} // Corrected attribute to onClick
+                        onClick={handleLogout} 
                         className="logout-button"
                     >Logout</button></li>
                 </ul>

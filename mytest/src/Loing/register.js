@@ -14,6 +14,14 @@ const Register = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [showModal, setShowModal] = useState(false);
+
+
+  const validatePassword = (password) => {
+    // Regex: ต้องมีตัวเลข, ตัวอักษรใหญ่, ตัวอักษรเล็ก และภาษาอังกฤษเท่านั้น
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    return regex.test(password);
+  };
+
   const slideshowImages = [
     "https://www.tripgether.com/wp-content/uploads/2022/11/Thian-Beach-18-1.jpg",
     "https://scontent.fbkk22-6.fna.fbcdn.net/v/t1.6435-9/117252927_10158380309612226_7100250055721318011_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHv8IiBqfCe5e7zjhE7H_pyaGdZG-sSmJdoZ1kb6xKYl9w0B9QGNpFrsdW41rxYPIdANVyWDPvpEoYVHRHLTTb8&_nc_ohc=uSfFcrcu0h0Q7kNvgF2w7aM&_nc_ht=scontent.fbkk22-6.fna&oh=00_AYAYJ8-7ghrzJYt-Du4YRu6Jtm7Z98i29cu5PC-8wubawg&oe=66AE5FA5",
@@ -97,8 +105,8 @@ const Register = () => {
             <div className='pads'>
               <input
                 className="form-control"
-                type="email"
-                placeholder="ชื่อผู้ใช้"
+                type="text"
+                placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -108,18 +116,19 @@ const Register = () => {
               <input
                 className="form-control"
                 type="password"
-                placeholder="รหัสผ่าน"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 minLength={8}
                 required
               />
+               {!isValid && <span className="error">Password must contain at least 8 characters, including uppercase, lowercase, and a number.</span>}
             </div>
             <div className='pads'>
               <input
                 className="form-control"
                 type="text"
-                placeholder="ชื่อ"
+                placeholder="Firtname"
                 value={firstname}
                 onChange={(e) => setFirstname(e.target.value)}
                 required
@@ -129,7 +138,7 @@ const Register = () => {
               <input
                 className="form-control"
                 type="text"
-                placeholder="นามสกุล"
+                placeholder="Lastname"
                 value={lastname}
                 onChange={(e) => setLastname(e.target.value)}
                 required
@@ -146,7 +155,7 @@ const Register = () => {
               <input
                 className="form-control"
                 type="email"
-                placeholder="อีเมล"
+                placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -156,7 +165,7 @@ const Register = () => {
               <input
                 className="form-control"
                 type="phone"
-                placeholder="เบอร์โทรศัพท์"
+                placeholder="Phone"
                 value={Phone}
                 onChange={(e) => setPhone(e.target.value)}
                 minLength="10"
@@ -165,7 +174,7 @@ const Register = () => {
             </div>
           </div>
           <button className="btn btn-primary" type="submit" disabled={loading}>
-            {loading ? 'กำลังลงทะเบียน...' : 'ลงทะเบียน'}
+            {loading ? 'Register...' : 'Register'}
           </button>
         </form>
         <Modal show={showModal} onHide={() => setShowModal(false)}>
